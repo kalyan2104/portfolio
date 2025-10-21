@@ -1,0 +1,92 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    --background: 28 33% 92%;
+    --foreground: 0 0% 15%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 15%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 15%;
+
+    --primary: 348 58% 46%;
+    --primary-foreground: 0 0% 98%;
+
+    --secondary: 28 33% 85%;
+    --secondary-foreground: 0 0% 15%;
+
+    --muted: 28 20% 88%;
+    --muted-foreground: 0 0% 40%;
+
+    --accent: 24 100% 50%;
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 28 20% 82%;
+    --input: 28 20% 82%;
+    --ring: 348 58% 46%;
+
+    --radius: 0.75rem;
+
+    /* Design palette custom properties */
+    --gradient-primary: linear-gradient(135deg, hsl(348 58% 46%), hsl(24 100% 60%));
+    --gradient-warm: linear-gradient(180deg, hsl(28 33% 92%), hsl(28 33% 88%));
+    --glow-primary: 0 0 30px hsl(348 58% 46% / 0.3);
+    --glow-strong: 0 0 50px hsl(348 58% 46% / 0.5);
+    --photo-bg: hsl(28 50% 85%);
+    
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Custom animations */
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+  }
+
+  @keyframes glow-pulse {
+    0%, 100% { box-shadow: var(--glow-primary); }
+    50% { box-shadow: var(--glow-strong); }
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-glow {
+    animation: glow-pulse 3s ease-in-out infinite;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+}
